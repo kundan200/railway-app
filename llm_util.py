@@ -10,7 +10,8 @@ from langchain_community.callbacks import get_openai_callback
 import langchain
 langchain.verbose = False
 
-OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
+OPENAI_API_KEY = "sk-proj-nS62fK2nWx0XcChb4zpqT3BlbkFJqbyA6WtGQlh2AAMiwakz"
+os.environ.get('OPENAI_API_KEY')
 
 class LLM:
   def __init__(self) -> None:
