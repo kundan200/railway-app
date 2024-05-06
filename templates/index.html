@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Railway Information System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #FFEFEF;
+            height: 170vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            
+        }
+
+        .description h2{
+            color: #102C57;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            
+            
+        }
+        .description p{
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            text-align: justify;
+            color: #3C5B6F;
+            margin-right: 18%;
+            margin-left: 18%;
+        }
+        .steps img{
+            width: 100vh;
+        }
+        
+
+        .container {
+            background-color: #FFEFEF;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            max-width: 500px;
+            margin-top: 10px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #AF8260;
+        }
+        .container p{
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #3C5B6F;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 10px;
+            width: 100%;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            background-color: #0056b3;
+        }
+
+        .alert {
+            border-radius: 5px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="description">
+        <h2>Welcome aboard! <br>Explore the future of railway assistance with our AI-powered system.</h2>
+        <!-- <p>Convert audio to text and get responses in minutes!</p> -->
+        <p>Explore the next-gen railway info system. Our platform merges chatbot, NLP, and speech recognition for quick access to train schedules and routes. With ChatGPT's power, get fast, accurate responses, while speech recognition makes interaction easy. User-friendly web interface keeps you informed on any device. Revolutionize your travel experience with our innovative system.</p>
+    </div>
+    <div class="steps">
+        <img src="{{ url_for('static', filename='images/Steps to interact.png') }}" alt="Image">
+
+    
+
+    <div class="container">
+        <h1>Experience The Convenience Of Voice Interaction</h1>
+        <p>Just ask, and our system will provide the information you need.</p>
+        <div class="row">
+            <div class="col-md-12">
+                <form action="/process_query" method="post" class="mb-4">
+                    <div class="form-group">
+                        <input type="text" name="query" class="form-control" placeholder="Enter your query">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+                <form action="/speech_to_text" method="get">
+                    <button type="submit" class="btn btn-secondary btn-block">Speak</button>
+                </form>
+            </div>
+        </div>
+        <br>
+        {% if query %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-info" role="alert">
+                    Your query: {{ query }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% if response %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert">
+                    Response: {{ response }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
